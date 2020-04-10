@@ -2,14 +2,14 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FDAlertPopup"
-  spec.version      = "0.1"
+  spec.version      = "0.4"
   spec.summary      = "FineDine Alert Popup"
 
   spec.description  = <<-DESC
 FineDine Alert ViewController, written in Swift.
                    DESC
 
-  spec.homepage     = "https://github.com/finedine/FDAlertPopup"
+  spec.homepage     = "https://github.com/finedine/FDAlertPopup-iOS"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author    = { "FineDine" => "info@finedinemenu.com" }
 
@@ -17,7 +17,7 @@ FineDine Alert ViewController, written in Swift.
   spec.swift_version = "5.0"
 
 
-  spec.source       = { :git => "https://github.com/finedine/FDAlertPopup.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/finedine/FDAlertPopup-iOS.git", :tag => "#{spec.version}" }
   spec.source_files  = "FDAlertPopup", "FDAlertPopup/**/*.swift"
 
   spec.resources = "FDAlertPopup/Media/*"
