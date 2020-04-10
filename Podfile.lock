@@ -1,0 +1,24 @@
+PODS:
+  - LGButton (1.1.6)
+  - lottie-ios (3.1.6)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - LGButton (= 1.1.6)
+  - lottie-ios
+  - SnapKit (= 4.2.0)
+
+SPEC REPOS:
+  trunk:
+    - LGButton
+    - lottie-ios
+    - SnapKit
+
+SPEC CHECKSUMS:
+  LGButton: 9f0a7f9d3030e3f504108342f6b66d64a429371b
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 1d0323062fb4e4f365ee468d2072602a8a1c6db6
+
+COCOAPODS: 1.9.1
