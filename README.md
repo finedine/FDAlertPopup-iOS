@@ -96,7 +96,7 @@ popup.display()
 | bodyText      | The text will be displayed as Body Label  | "" |
 | noteText      | The text will be displayed as Note Label  | "" |
 | confirmButtonText      | The text will be displayed on Confrim Button  | "" |
-| confirmButtonTitleColor      | The text color of the Confirm Button Title  | UIColor(red: 0.9, green: 0.01, blue: 0.29, alpha: 1) |
+| confirmButtonTitleColor      | The text color of the Confirm Button Title  | UIColor.white |
 | confirmButtonBgColor      | The background color of the Confirm Button  | UIColor.clear |
 | confirmButtonBorderColor      | The border color of the Confirm Button  | UIColor(red: 0.9, green: 0.01, blue: 0.29, alpha: 1) |
 | cancelButtonText      | The text will be displayed on Cancel Button  | "" |
