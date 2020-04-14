@@ -250,6 +250,7 @@ public extension FDAlertPopup {
         self.stackView.axis = .vertical
         self.stackView.spacing = 15
         self.buttonStackView.spacing = 15
+        self.buttonStackView.distribution = .fillEqually
 
         blurEffectView.snp.makeConstraints { (make) -> Void in
             make.edges.equalToSuperview()

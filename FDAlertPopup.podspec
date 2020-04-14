@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FDAlertPopup"
-  spec.version      = "0.5"
+  spec.version      = "0.6"
   spec.summary      = "FineDine Alert Popup"
 
   spec.description  = <<-DESC
@@ -24,6 +24,6 @@ FineDine Alert ViewController, written in Swift.
 
   spec.dependency "SnapKit", "4.2.0"
   spec.dependency "LGButton", "1.1.6"
-  spec.dependency "lottie-ios"
+  spec.dependency "lottie-ios", "3.1.6"
 
 end
