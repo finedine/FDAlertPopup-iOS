@@ -136,7 +136,6 @@ public class FDAlertPopup: UIViewController {
             noteLabel.font = noteLabelFont
         }
     }
-
     public var buttonsFont: UIFont = UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20) {
         didSet {
             confirmButton.titleFontName = buttonsFont.fontName

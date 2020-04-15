@@ -85,10 +85,10 @@ popup.display()
 | ------------- |-------------| -----|
 | lottieResource      | The lottie resource for the animations  | nil |
 | iconResource      | The image resource for the icons  | nil |
-| titleLabelFont      | The font of the title label  | UIFont.boldSystemFont(ofSize: 22) |
-| bodyLabelFont      | The font of the body label  | UIFont.systemFont(ofSize: 20) |
-| noteLabelFont      | The font of the note label  | UIFont.italicSystemFont(ofSize: 18) |
-| buttonsFont      | The font of the buttons' labels  | UIFont.boldSystemFont(ofSize: 20)  |
+| titleLabelFont      | The font of the title label  | UIFont(name: "NunitoSans-SemiBold", size: 24) |
+| bodyLabelFont      | The font of the body label  | UIFont(name: "NunitoSans-Regular", size: 20) |
+| noteLabelFont      | The font of the note label  | UIFont(name: "NunitoSans-Italic", size: 20) |
+| buttonsFont      | The font of the buttons' labels  | UIFont(name: "NunitoSans-Italic", size: 18)  |
 | titleLabelColor      | The text color of the title label  | UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) |
 | bodyLabelColor      | The text color of the body label  | UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) |
 | noteLabelColor      | The text color of the note label  | UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) |
@@ -97,8 +97,8 @@ popup.display()
 | noteText      | The text will be displayed as Note Label  | "" |
 | confirmButtonText      | The text will be displayed on Confrim Button  | "" |
 | confirmButtonTitleColor      | The text color of the Confirm Button Title  | UIColor.white |
-| confirmButtonBgColor      | The background color of the Confirm Button  | UIColor.clear |
-| confirmButtonBorderColor      | The border color of the Confirm Button  | UIColor(red: 0.9, green: 0.01, blue: 0.29, alpha: 1) |
+| confirmButtonBgColor      | The background color of the Confirm Button  | UIColor(red: 0.9, green: 0.01, blue: 0.29, alpha: 1) |
+| confirmButtonBorderColor      | The border color of the Confirm Button  | UIColor.clear |
 | cancelButtonText      | The text will be displayed on Cancel Button  | "" |
 | cancelButtonTitleColor      | The text color of the Cancel Button Title  | UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 1) |
 | cancelButtonBgColor      | The background color of the Cancel Button  | UIColor.clear |
