@@ -40,7 +40,7 @@ public class FDAlertPopup: UIViewController {
 
         label.textAlignment = .center
         label.textColor = hexToColor("333C4E")
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont(name: "NunitoSans-SemiBold", size: 24)
         label.numberOfLines = 0
 
         return label
@@ -50,7 +50,7 @@ public class FDAlertPopup: UIViewController {
 
         label.textAlignment = .center
         label.textColor = hexToColor("333C4E")
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont(name: "NunitoSans-Regular", size: 20)
         label.numberOfLines = 0
 
         return label
@@ -60,7 +60,7 @@ public class FDAlertPopup: UIViewController {
 
         label.textAlignment = .center
         label.textColor = hexToColor("333C4E")
-        label.font = UIFont.italicSystemFont(ofSize: 18)
+        label.font = UIFont(name: "NunitoSans-Italic", size: 18)
         label.numberOfLines = 0
 
         return label
@@ -79,8 +79,8 @@ public class FDAlertPopup: UIViewController {
         button.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 160, height: 50))
         }
-        button.titleFontName = UIFont.boldSystemFont(ofSize: 20).fontName
-        button.titleFontSize = UIFont.boldSystemFont(ofSize: 20).pointSize
+        button.titleFontName = (UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20)).fontName
+        button.titleFontSize = (UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20)).pointSize
 
         button.addTarget(self, action: #selector(buttonsTapped), for: .touchUpInside)
 
@@ -99,8 +99,8 @@ public class FDAlertPopup: UIViewController {
         button.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 160, height: 50))
         }
-        button.titleFontName = UIFont.boldSystemFont(ofSize: 20).fontName
-        button.titleFontSize = UIFont.boldSystemFont(ofSize: 20).pointSize
+        button.titleFontName = (UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20)).fontName
+        button.titleFontSize = (UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20)).pointSize
 
         button.addTarget(self, action: #selector(buttonsTapped), for: .touchUpInside)
 
@@ -121,23 +121,23 @@ public class FDAlertPopup: UIViewController {
         }
     }
 
-    public var titleLabelFont: UIFont = UIFont.boldSystemFont(ofSize: 22) {
+    public var titleLabelFont: UIFont = UIFont(name: "NunitoSans-SemiBold", size: 24) ?? UIFont.boldSystemFont(ofSize: 22) {
         didSet {
             titleLabel.font = titleLabelFont
         }
     }
-    public var bodyLabelFont: UIFont = UIFont.systemFont(ofSize: 20) {
+    public var bodyLabelFont: UIFont = UIFont(name: "NunitoSans-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20) {
         didSet {
             bodyLabel.font = bodyLabelFont
         }
     }
-    public var noteLabelFont: UIFont = UIFont.italicSystemFont(ofSize: 18) {
+    public var noteLabelFont: UIFont = UIFont(name: "NunitoSans-Italic", size: 18) ?? UIFont.italicSystemFont(ofSize: 20) {
         didSet {
             noteLabel.font = noteLabelFont
         }
     }
 
-    public var buttonsFont: UIFont = UIFont.boldSystemFont(ofSize: 20) {
+    public var buttonsFont: UIFont = UIFont(name: "NunitoSans-Bold", size: 20) ?? UIFont.boldSystemFont(ofSize: 20) {
         didSet {
             confirmButton.titleFontName = buttonsFont.fontName
             confirmButton.titleFontSize = buttonsFont.pointSize
@@ -183,7 +183,7 @@ public class FDAlertPopup: UIViewController {
             confirmButton.titleString = confirmButtonText
         }
     }
-    public var confirmButtonTitleColor: UIColor = hexToColor("E6034B") {
+    public var confirmButtonTitleColor: UIColor = .white {
         didSet {
             confirmButton.titleColor = confirmButtonTitleColor
         }
