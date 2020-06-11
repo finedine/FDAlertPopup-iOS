@@ -180,6 +180,9 @@ public class FDAlertPopup: UIViewController {
     public var confirmButtonText: String = "" {
         didSet {
             confirmButton.titleString = confirmButtonText
+            if view.superview != nil {
+                checkButtons()
+            }
         }
     }
     public var confirmButtonTitleColor: UIColor = .white {
@@ -201,6 +204,9 @@ public class FDAlertPopup: UIViewController {
     public var cancelButtonText: String = "" {
         didSet {
             cancelButton.titleString = cancelButtonText
+            if view.superview != nil {
+                checkButtons()
+            }
         }
     }
     public var cancelButtonTitleColor: UIColor = hexToColor("6A6A6A") {
@@ -300,36 +306,7 @@ public extension FDAlertPopup {
             make.trailing.lessThanOrEqualTo(self.contentView.snp.trailing).offset(-35)
         }
 
-        if cancelButtonText != "" || confirmButtonText != "" {
-            self.contentView.addSubview(buttonStackView)
-            if cancelButtonText != "" {
-                self.buttonStackView.addArrangedSubview(cancelButton)
-            }
-            if confirmButtonText != "" {
-                self.buttonStackView.addArrangedSubview(confirmButton)
-            }
-
-            buttonStackView.snp.makeConstraints { (make) -> Void in
-                if self.stackView.subviews.count > 0 {
-                    make.top.equalTo(self.stackView.snp.bottom).offset(25)
-                } else if lottieResource != nil {
-                    make.top.equalTo(self.animationView.snp.bottom).offset(25)
-                } else if iconResource != nil {
-                    make.top.equalTo(self.imageView.snp.bottom).offset(25)
-                } else {
-                    make.top.equalTo(self.contentView.snp.top).offset(35)
-                }
-
-                make.centerX.equalTo(self.contentView.snp.centerX)
-                make.leading.greaterThanOrEqualTo(self.contentView.snp.leading).offset(35)
-                make.trailing.lessThanOrEqualTo(self.contentView.snp.trailing).offset(-35)
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-35)
-            }
-        } else {
-            stackView.snp.makeConstraints { (make) -> Void in
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-35)
-            }
-        }
+        checkButtons()
 
         if lottieResource == nil, iconResource == nil, titleText == "", bodyText == "", noteText == "", cancelButtonText == "", confirmButtonText == "" {
 
@@ -406,6 +383,42 @@ public extension FDAlertPopup {
                 imageView.image = UIImage(named: resource)
             case .none:
                 imageView.image = UIImage(named: "")
+            }
+        }
+    }
+
+    private func checkButtons() {
+        self.buttonStackView.subviews.forEach { view in
+            view.removeFromSuperview()
+        }
+        if cancelButtonText != "" || confirmButtonText != "" {
+            self.contentView.addSubview(buttonStackView)
+            if cancelButtonText != "" {
+                self.buttonStackView.addArrangedSubview(cancelButton)
+            }
+            if confirmButtonText != "" {
+                self.buttonStackView.addArrangedSubview(confirmButton)
+            }
+
+            buttonStackView.snp.makeConstraints { (make) -> Void in
+                if self.stackView.subviews.count > 0 {
+                    make.top.equalTo(self.stackView.snp.bottom).offset(25)
+                } else if lottieResource != nil {
+                    make.top.equalTo(self.animationView.snp.bottom).offset(25)
+                } else if iconResource != nil {
+                    make.top.equalTo(self.imageView.snp.bottom).offset(25)
+                } else {
+                    make.top.equalTo(self.contentView.snp.top).offset(35)
+                }
+
+                make.centerX.equalTo(self.contentView.snp.centerX)
+                make.leading.greaterThanOrEqualTo(self.contentView.snp.leading).offset(35)
+                make.trailing.lessThanOrEqualTo(self.contentView.snp.trailing).offset(-35)
+                make.bottom.equalTo(self.contentView.snp.bottom).offset(-35)
+            }
+        } else {
+            stackView.snp.makeConstraints { (make) -> Void in
+                make.bottom.equalTo(self.contentView.snp.bottom).offset(-35)
             }
         }
     }
