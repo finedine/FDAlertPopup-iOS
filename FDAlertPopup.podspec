@@ -24,6 +24,6 @@ FineDine Alert ViewController, written in Swift.
 
   spec.dependency "SnapKit", "4.2.0"
   spec.dependency "LGButton", "1.1.6"
-  spec.dependency "lottie-ios", "3.1.6"
+  spec.dependency "lottie-ios", "3.1.0"
 
 end
