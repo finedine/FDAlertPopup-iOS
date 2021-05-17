@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FDAlertPopup"
-  spec.version      = "0.8"
+  spec.version      = "0.9"
   spec.summary      = "FineDine Alert Popup"
 
   spec.description  = <<-DESC
