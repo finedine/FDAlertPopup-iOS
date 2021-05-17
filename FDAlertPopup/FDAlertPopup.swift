@@ -30,7 +30,8 @@ public class FDAlertPopup: UIViewController {
 
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark))
     let contentView = UIView()
-    let animationView = AnimationView()
+    var animationView: AnimationView?
+    var lottieFallback = UIImageView()
     let imageView = UIImageView()
     let stackView = UIStackView()
     let buttonStackView = UIStackView()
@@ -270,13 +271,25 @@ public extension FDAlertPopup {
     func display() {
         if lottieResource != nil {
 
-            self.contentView.addSubview(animationView)
-            initializeLottieView()
+            if #available(iOS 10.0, *) {
+                animationView = AnimationView()
+                self.contentView.addSubview(animationView!)
+                initializeLottieView()
 
-            animationView.snp.makeConstraints { (make) -> Void in
-                make.top.equalTo(self.contentView.snp.top).offset(35)
-                make.centerX.equalTo(self.contentView.snp.centerX)
-                make.size.equalTo(CGSize(width: 80, height: 80))
+                animationView?.snp.makeConstraints { (make) -> Void in
+                    make.top.equalTo(self.contentView.snp.top).offset(35)
+                    make.centerX.equalTo(self.contentView.snp.centerX)
+                    make.size.equalTo(CGSize(width: 80, height: 80))
+                }
+            } else {
+                self.contentView.addSubview(lottieFallback)
+                lottieFallback.contentMode = .scaleAspectFit
+                initializeLottieView()
+                lottieFallback.snp.makeConstraints { (make) -> Void in
+                    make.top.equalTo(self.contentView.snp.top).offset(35)
+                    make.centerX.equalTo(self.contentView.snp.centerX)
+                    make.size.equalTo(CGSize(width: 80, height: 80))
+                }
             }
         } else if iconResource != nil {
 
@@ -295,7 +308,11 @@ public extension FDAlertPopup {
 
         stackView.snp.makeConstraints { (make) -> Void in
             if lottieResource != nil {
-                make.top.equalTo(self.animationView.snp.bottom).offset(10)
+                if let animation = self.animationView {
+                    make.top.equalTo(animation.snp.bottom).offset(10)
+                } else {
+                    make.top.equalTo(lottieFallback.snp.bottom).offset(10)
+                }
             } else if iconResource != nil {
                 make.top.equalTo(self.imageView.snp.bottom).offset(10)
             } else {
@@ -341,28 +358,31 @@ public extension FDAlertPopup {
     }
 
     private func initializeLottieView() {
-        if self.animationView.superview != nil {
+        if self.animationView?.superview != nil || self.lottieFallback.superview != nil {
 
             let bundle = Bundle(for: FDAlertPopup.self)
-            animationView.loopMode = .playOnce
+            animationView?.loopMode = .playOnce
             switch lottieResource {
             case .success:
-                animationView.animation = Animation.filepath(bundle.path(forResource: "success", ofType: "json") ?? "")
+                animationView?.animation = Animation.filepath(bundle.path(forResource: "success", ofType: "json") ?? "")
+                lottieFallback.image = UIImage(named: "success", in: bundle, compatibleWith: nil)
             case .fail:
-                animationView.animation = Animation.filepath(bundle.path(forResource: "fail", ofType: "json") ?? "")
+                animationView?.animation = Animation.filepath(bundle.path(forResource: "fail", ofType: "json") ?? "")
+                lottieFallback.image = UIImage(named: "fail", in: bundle, compatibleWith: nil)
             case .info:
-                animationView.animation = Animation.filepath(bundle.path(forResource: "info", ofType: "json") ?? "")
+                animationView?.animation = Animation.filepath(bundle.path(forResource: "info", ofType: "json") ?? "")
+                lottieFallback.image = UIImage(named: "info", in: bundle, compatibleWith: nil)
             case .wait:
-                animationView.animation = Animation.filepath(bundle.path(forResource: "wait", ofType: "json") ?? "")
-                animationView.loopMode = .loop
+                animationView?.animation = Animation.filepath(bundle.path(forResource: "wait", ofType: "json") ?? "")
+                animationView?.loopMode = .loop
             case .custom(let resource):
-                animationView.animation = Animation.named(resource)
+                animationView?.animation = Animation.named(resource)
             case .none:
-                animationView.animation = Animation.named("")
+                animationView?.animation = Animation.named("")
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.animationView.play()
+                self.animationView?.play()
             }
         }
     }
@@ -404,7 +424,11 @@ public extension FDAlertPopup {
                 if self.stackView.subviews.count > 0 {
                     make.top.equalTo(self.stackView.snp.bottom).offset(25)
                 } else if lottieResource != nil {
-                    make.top.equalTo(self.animationView.snp.bottom).offset(25)
+                    if let animation = self.animationView {
+                        make.top.equalTo(animation.snp.bottom).offset(25)
+                    } else {
+                        make.top.equalTo(lottieFallback.snp.bottom).offset(25)
+                    }
                 } else if iconResource != nil {
                     make.top.equalTo(self.imageView.snp.bottom).offset(25)
                 } else {
